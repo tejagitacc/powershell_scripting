@@ -1,0 +1,20 @@
+Scope
+Scope is how PowerShell defines where constructs like variables, aliases, and functions can be read and changed. When you're learning to write scripts, you need to know what you have access to, what you can change, and where you can change it. If you don't understand how scope works, your code might not work as you expect it to.
+
+Types of scope
+Let's talk about the various scopes:
+
+Global scope. When you create constructs like variables in this scope, they continue to exist after your session ends. Anything that's present when you start a new PowerShell session can be said to be in this scope.
+
+Script scope. When you run a script file, a script scope is created. For example, a variable or a function defined in the file is in the script scope. It will no longer exist after the file is finished running. For example, you can create a variable in the script file and target the global scope. But you need to explicitly define that scope by prepending the variable with the global keyword.
+
+Local scope. The local scope is the current scope, and can be the global scope or any other scope.
+
+Scope rules
+Scope rules help you understand what values are visible at a given point. They also help you understand how to change a value.
+
+Scopes can nest. A scope can have a parent scope. A parent scope is an outer scope, outside of the scope you're in. For example, a local scope can have the global scope as a parent scope. Conversely, a scope can have a nested scope, also known as a child scope.
+
+Items are visible in the current and child scopes. An item, like a variable or a function, is visible in the scope in which it's created. By default, it's also visible in any child scopes. You can change that behavior by making the item private within the scope.
+
+Items can be changed only in the created scope. By default, you can change an item only in the scope in which it was created. You can change this behavior by explicitly specifying a different scope.
