@@ -1,0 +1,23 @@
+Profiles
+A profile is a script that runs when PowerShell starts. You can use a profile to customize your environment to, for example, change background colors and errors and do other types of customizations. PowerShell will apply these changes to each new session you start.
+
+Profile types
+PowerShell supports several profile files. You can apply them at various levels, as you see here:
+
+Description	Path
+All users, all hosts	$PSHOME\Profile.ps1
+All users, current host	$PSHOME\Microsoft.PowerShell_profile.ps1
+Current user, all hosts	$Home[My ]Documents\PowerShell\Profile.ps1
+Current user, current host	$Home[My ]Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+There are two variables here: $PSHOME and $Home. $PSHOME points to the installation directory for PowerShell. $Home is the current user's home directory.
+
+Other programs also support profiles, like Visual Studio Code.
+
+Create a profile
+When you first install PowerShell, there are no profiles, but there is a $Profile variable. It's an object that points to the path where each profile to apply should be placed. To create a profile:
+
+Decide the level on which you want to create the profile. You can run $Profile | Select-Object * to see the profile types and the paths associated with them.
+
+Select a profile type and create a text file at its location by using a command like this one: New-Item -Path $Profile.CurrentUserCurrentHost.
+
+Add your customizations to the text file and save it. The next time you start a session, your changes will be applied
